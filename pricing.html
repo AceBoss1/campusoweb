@@ -1,28 +1,3 @@
-export default {
-  async fetch(request, env, ctx) {
-    const url = new URL(request.url);
-
-    // Route: Browser Favicon Shortcut
-    if (url.pathname === '/favicon.ico') {
-      // Automatically transparently redirect or fetch the asset from your pages build
-      return fetch(new URL('/public/campuso-icon.png', request.url));
-    }
-
-    // Route: Pricing Page
-    if (url.pathname === '/pricing' || url.pathname === '/pricing/') {
-      return new Response(pricingPageHTML, {
-        headers: { 'Content-Type': 'text/html; charset=utf-8' },
-      });
-    }
-
-    // Route: Home Page Fallback / Default handling
-    // If you use standard Workers+Pages configuration, you can pass-through to assets
-    return fetch(request);
-  },
-};
-
-// --- HTML TEMPLATE: PRICING PAGE ---
-const pricingPageHTML = `
 <!DOCTYPE html>
 <html lang="en">
 <head>
