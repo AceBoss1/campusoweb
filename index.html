@@ -114,6 +114,44 @@
 
   h2.section-title { font-size: 1.8rem; letter-spacing: -0.01em; color: var(--green-deep); max-width: 30ch; }
 
+
+  .brand .logo { width: 32px; height: 32px; object-fit: contain; display: block; }
+  .hero-logo { width: 88px; height: 88px; object-fit: contain; display: block; margin-bottom: 22px; }
+
+  /* Pricing */
+  #pricing .pricing-head { text-align: center; max-width: 42rem; margin: 0 auto 56px; }
+  #pricing .pricing-head h2 { font-size: clamp(1.9rem, 4vw, 2.4rem); letter-spacing: -0.02em; font-weight: 800; color: var(--green-deep); margin: 0 0 16px; max-width: none; }
+  :root[data-theme="dark"] #pricing .pricing-head h2 { color: var(--ink); }
+  #pricing .pricing-head p { color: var(--muted); margin: 0; line-height: 1.55; }
+  .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 32px; align-items: stretch; text-align: left; }
+  .price-card { background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 32px; box-shadow: 0 1px 2px rgba(0,0,0,.05); display: flex; flex-direction: column; justify-content: space-between; position: relative; transition: box-shadow .2s ease; }
+  .price-card:hover { box-shadow: 0 6px 16px rgba(0,0,0,.08); }
+  .price-card.popular { border: 2px solid var(--green); box-shadow: 0 6px 16px rgba(0,0,0,.08); transform: translateY(-8px); }
+  @media (max-width: 780px) { .price-card.popular { transform: none; } }
+  .price-card .pop-tag { position: absolute; top: 0; right: 24px; transform: translateY(-50%); background: var(--gold); color: #142118; font-size: 0.75rem; font-weight: 700; padding: 4px 12px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .price-card .icon { width: 48px; height: 48px; border-radius: 12px; background: color-mix(in srgb, var(--green) 14%, transparent); display: flex; align-items: center; justify-content: center; margin-bottom: 24px; }
+  .price-card .icon svg { width: 24px; height: 24px; color: var(--green); }
+  .price-card h3 { font-size: 1.25rem; font-weight: 700; margin: 0 0 8px; }
+  .price-card .desc { color: var(--muted); font-size: 0.875rem; line-height: 1.5; margin: 0 0 24px; }
+  .price-card .amount { font-family: 'Sora', system-ui, sans-serif; font-size: 1.5rem; font-weight: 800; margin-bottom: 4px; }
+  .price-card .note { font-size: 0.75rem; color: var(--muted); margin: 0; opacity: .85; }
+  .price-card .price-btn { display: block; margin-top: 32px; width: 100%; background: var(--green); color: #fff; font-weight: 500; font-size: 0.875rem; padding: 12px 16px; border-radius: 12px; text-align: center; text-decoration: none; transition: filter .15s ease; }
+  .price-card .price-btn:hover { filter: brightness(0.92); }
+
+  /* Phone frames + screenshot showcases */
+  .phone-frame { margin: 0; width: min(var(--pw, 260px), 80vw); background: var(--green-deep); border-radius: 34px; padding: 12px; box-shadow: 0 30px 60px -20px rgba(15,61,36,.35); }
+  .phone-frame img { display: block; width: 100%; height: auto; border-radius: 24px; }
+  .hero-phone { --pw: 300px; justify-self: center; }
+  .showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  @media (max-width: 860px) { .showcase { grid-template-columns: 1fr; gap: 36px; } }
+  @media (min-width: 861px) { .showcase.reverse .showcase-phones { order: -1; } }
+  .showcase-phones { display: flex; gap: 24px; justify-content: center; align-items: flex-start; }
+  .showcase-phones.pair .phone-frame { width: min(230px, 42vw); }
+  .showcase-phones.pair .phone-frame + .phone-frame { margin-top: 48px; }
+  .showcase-copy h3 { margin: 26px 0 6px; font-size: 1.05rem; }
+  .showcase-copy p.detail { margin: 0; color: var(--muted); font-size: 0.95rem; line-height: 1.55; max-width: 46ch; }
+  #pricing .showcase { margin-top: 80px; }
+
   footer { padding: 40px 0 calc(40px + env(safe-area-inset-bottom, 0px)); color: var(--muted); font-size: 0.9rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
   footer a { text-decoration: none; }
 </style>
@@ -122,10 +160,10 @@
 
 <nav>
   <div class="row">
-    <div class="brand"><span class="dot"></span>Campuso</div>
+    <div class="brand"><img class="logo" src="/public/campuso-icon.png" alt="" width="32" height="32">Campuso</div>
     <div class="navlinks">
       <a href="#features">Features</a>
-      <a href="pricing.html">Pricing</a>
+      <a href="#pricing">Pricing</a>
       <a href="#download">Download</a>
     </div>
   </div>
@@ -134,6 +172,7 @@
 <header class="hero">
   <div class="wrap hero-grid">
     <div>
+      <img class="hero-logo" src="/public/campuso-icon.png" alt="Campuso logo" width="88" height="88">
       <div class="eyebrow">Built for Nigerian universities</div>
       <h1 class="headline">Your campus,<br>closer.</h1>
       <p class="sub">One app for your school's feed, DMs, confessions, whistleblowing, and booking a lecturer's office hours — built around how campus actually works.</p>
@@ -146,25 +185,9 @@
         <a class="btn btn-store" href="#" id="ios-btn">Get it on iPhone</a>
       </div>
     </div>
-    <div class="phone">
-      <div class="phone-screen">
-        <div class="fake-card">
-          <div class="row1"><span class="avatar"></span><div style="flex:1"><div class="bar w40"></div></div></div>
-          <div class="bar w80" style="margin-bottom:6px"></div>
-          <div class="bar w60"></div>
-          <span class="badge-boost">Boosted</span>
-        </div>
-        <div class="fake-card">
-          <div class="row1"><span class="avatar" style="background:var(--green)"></span><div style="flex:1"><div class="bar w40"></div></div></div>
-          <div class="bar w80" style="margin-bottom:6px"></div>
-          <div class="bar w40"></div>
-        </div>
-        <div class="fake-card">
-          <div class="row1"><span class="avatar" style="background:#8aa998"></span><div style="flex:1"><div class="bar w40"></div></div></div>
-          <div class="bar w60"></div>
-        </div>
-      </div>
-    </div>
+    <figure class="phone-frame hero-phone">
+      <img src="/public/dm-call.jpeg" alt="Campuso messages screen showing conversations with classmates" width="570" height="1014">
+    </figure>
   </div>
 </header>
 
@@ -191,14 +214,80 @@
   </div>
 </section>
 
+<section id="anonymous">
+  <div class="wrap showcase">
+    <div class="showcase-copy">
+      <h2 class="section-title" style="margin:0 0 16px;">Speak up without putting your name on it</h2>
+      <p class="sub" style="margin:0;">Two ways to say what you can't say out loud, both built so nobody on campus sees who you are.</p>
+      <h3>Confessions</h3>
+      <p class="detail">Posted as Campuso Anonymous. Every confession is reviewed before it reaches the wall, so bullying and doxxing stay off it.</p>
+      <h3>Whistleblow portal</h3>
+      <p class="detail">Send reports of misconduct, harassment or safety concerns straight to Campuso admins, then track them with an anonymous ticket ID.</p>
+    </div>
+    <div class="showcase-phones pair">
+      <figure class="phone-frame"><img src="/public/confessions.jpeg" alt="Campuso Submit Confession screen" width="570" height="1280" loading="lazy"></figure>
+      <figure class="phone-frame"><img src="/public/whistleblow.jpeg" alt="Campuso Whistleblow Portal screen" width="570" height="1280" loading="lazy"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- Clean Pricing & Add-ons Section -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="pricing-head">
+      <h2>Premium Add-ons</h2>
+      <p>Campuso features are free for daily essentials. Supercharge your presence with optional campus modules.</p>
+    </div>
+    <div class="price-grid">
+      <!-- Premium Video Calls -->
+      <div class="price-card">
+        <div>
+          <div class="icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg></div>
+          <h3>Premium Video Calls</h3>
+          <p class="desc">High-definition 1:1 and group video sync sessions. Audio calls remain free forever.</p>
+          <div class="amount">Per Minute</div>
+          <p class="note">Rate determined dynamically by your university tier</p>
+        </div>
+        <a class="price-btn" href="#">Enable Access</a>
+      </div>
+      <!-- Boost This Post -->
+      <div class="price-card popular">
+        <span class="pop-tag">Popular</span>
+        <div>
+          <div class="icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg></div>
+          <h3>Boost This Post</h3>
+          <p class="desc">Reach 5x more students for 24 hours. Switch it on right in the post composer.</p>
+          <div class="amount">₦500 – ₦2,000</div>
+          <p class="note">Standard ₦500, Premium ₦2,000 per 24-hour boost</p>
+        </div>
+        <a class="price-btn" href="#">Boost a Post</a>
+      </div>
+    </div>
+    <div class="showcase">
+      <div class="showcase-phones">
+        <figure class="phone-frame"><img src="/public/boost.jpeg" alt="Campuso Create Post screen with the Boost this post option" width="570" height="1013" loading="lazy"></figure>
+      </div>
+      <div class="showcase-copy">
+        <h3 style="margin-top:0;">Boost a post while you write it</h3>
+        <p class="detail">Switch on Boost in the post composer to reach 5x more students for 24 hours, with Standard at ₦500 or Premium at ₦2,000.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="download">
-  <div class="wrap" style="text-align:center;">
-    <h2 class="section-title" style="margin:0 auto 16px;">Get Campuso</h2>
-    <p class="sub" style="margin:0 auto 30px;">On the store where your school is live — or the direct download in the meantime.</p>
-    <div class="cta-row" style="justify-content:center;">
-      <a class="btn btn-store" id="android-btn-2" href="#">Android</a>
-      <a class="btn btn-store" id="ios-btn-2" href="#">iPhone</a>
-      <a class="btn btn-ghost" id="web-login-btn-2" href="#">Continue on web</a>
+  <div class="wrap showcase reverse">
+    <div class="showcase-copy">
+      <h2 class="section-title" style="margin:0 0 16px;">Get Campuso</h2>
+      <p class="sub" style="margin:0 0 30px;">On the store where your school is live — or the direct download in the meantime.</p>
+      <div class="cta-row">
+        <a class="btn btn-store" id="android-btn-2" href="#">Android</a>
+        <a class="btn btn-store" id="ios-btn-2" href="#">iPhone</a>
+        <a class="btn btn-ghost" id="web-login-btn-2" href="#">Continue on web</a>
+      </div>
+    </div>
+    <div class="showcase-phones">
+      <figure class="phone-frame"><img src="/public/login.jpeg" alt="Campuso welcome screen with phone number sign-in" width="570" height="1014" loading="lazy"></figure>
     </div>
   </div>
 </section>
@@ -206,7 +295,7 @@
 <footer>
   <div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:12px;">
     <span>© <span id="year"></span> Campuso</span>
-    <span><a href="pricing.html">Pricing</a></span>
+    <span><a href="#pricing">Pricing</a></span>
   </div>
 </footer>
 
