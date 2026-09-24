@@ -151,6 +151,16 @@
   .showcase-copy h3 { margin: 26px 0 6px; font-size: 1.05rem; }
   .showcase-copy p.detail { margin: 0; color: var(--muted); font-size: 0.95rem; line-height: 1.55; max-width: 46ch; }
   #pricing .showcase { margin-top: 80px; }
+  .tiers { display: flex; flex-direction: column; gap: 12px; }
+  .tier { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; }
+  .price-card .tier .seal { width: 28px; height: 28px; flex: none; color: inherit; }
+  .tier-body { flex: 1; min-width: 0; }
+  .tier-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+  .tier-name { font-weight: 600; font-size: 0.95rem; }
+  .tier-price { font-family: 'Sora', system-ui, sans-serif; font-weight: 800; font-size: 1.05rem; }
+  .tier-price small { font-family: 'Inter', system-ui, sans-serif; font-weight: 500; font-size: 0.75rem; color: var(--muted); }
+  .tier .note { margin-top: 2px; }
+  .showcase .price-card { max-width: 440px; }
 
   footer { padding: 40px 0 calc(40px + env(safe-area-inset-bottom, 0px)); color: var(--muted); font-size: 0.9rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
   footer a { text-decoration: none; }
@@ -250,9 +260,38 @@
         </div>
         <a class="price-btn" href="#">Enable Access</a>
       </div>
-      <!-- Boost This Post -->
+      <!-- Verification Badge -->
       <div class="price-card popular">
-        <span class="pop-tag">Popular</span>
+        <div>
+          <div class="icon"><svg class="seal" style="width:24px;height:24px" viewBox="0 0 24 24"><path d="M12 2l2.4 1.7 2.9-.2 1 2.7 2.4 1.7-.9 2.8.9 2.8-2.4 1.7-1 2.7-2.9-.2L12 22l-2.4-1.7-2.9.2-1-2.7-2.4-1.7.9-2.8-.9-2.8 2.4-1.7 1-2.7 2.9.2z" fill="currentColor" stroke="none"/><path d="M8.5 12.2l2.4 2.4 4.6-4.8" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Verification Badge</h3>
+          <p class="desc">Stand out on campus and protect your name. Billed monthly.</p>
+          <div class="tiers">
+            <div class="tier">
+              <svg class="seal" viewBox="0 0 24 24" style="color:#1D9BF0"><path d="M12 2l2.4 1.7 2.9-.2 1 2.7 2.4 1.7-.9 2.8.9 2.8-2.4 1.7-1 2.7-2.9-.2L12 22l-2.4-1.7-2.9.2-1-2.7-2.4-1.7.9-2.8-.9-2.8 2.4-1.7 1-2.7 2.9.2z" fill="currentColor" stroke="none"/><path d="M8.5 12.2l2.4 2.4 4.6-4.8" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <div class="tier-body">
+                <div class="tier-head"><span class="tier-name">Blue badge</span><span class="tier-price">₦1,900<small>/month</small></span></div>
+                <p class="note">Basic verification with impersonation protection</p>
+              </div>
+            </div>
+            <div class="tier">
+              <svg class="seal" viewBox="0 0 24 24" style="color:var(--green)"><path d="M12 2l2.4 1.7 2.9-.2 1 2.7 2.4 1.7-.9 2.8.9 2.8-2.4 1.7-1 2.7-2.9-.2L12 22l-2.4-1.7-2.9.2-1-2.7-2.4-1.7.9-2.8-.9-2.8 2.4-1.7 1-2.7 2.9.2z" fill="currentColor" stroke="none"/><path d="M8.5 12.2l2.4 2.4 4.6-4.8" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <div class="tier-body">
+                <div class="tier-head"><span class="tier-name">Green badge</span><span class="tier-price">₦4,499<small>/month</small></span></div>
+                <p class="note">Advanced: gives priority in feeds and searches</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a class="price-btn" href="#">Get Verified</a>
+      </div>
+    </div>
+    <div class="showcase">
+      <div class="showcase-phones">
+        <figure class="phone-frame"><img src="/public/boost.jpeg" alt="Campuso Create Post screen with the Boost this post option" width="570" height="1013" loading="lazy"></figure>
+      </div>
+      <!-- Boost This Post -->
+      <div class="price-card">
         <div>
           <div class="icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg></div>
           <h3>Boost This Post</h3>
@@ -261,15 +300,6 @@
           <p class="note">Standard ₦500, Premium ₦2,000 per 24-hour boost</p>
         </div>
         <a class="price-btn" href="#">Boost a Post</a>
-      </div>
-    </div>
-    <div class="showcase">
-      <div class="showcase-phones">
-        <figure class="phone-frame"><img src="/public/boost.jpeg" alt="Campuso Create Post screen with the Boost this post option" width="570" height="1013" loading="lazy"></figure>
-      </div>
-      <div class="showcase-copy">
-        <h3 style="margin-top:0;">Boost a post while you write it</h3>
-        <p class="detail">Switch on Boost in the post composer to reach 5x more students for 24 hours, with Standard at ₦500 or Premium at ₦2,000.</p>
       </div>
     </div>
   </div>
